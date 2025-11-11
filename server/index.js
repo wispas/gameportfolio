@@ -4,17 +4,21 @@ import { Chess } from "chess.js";
 
 const app = express();
 
-app.use(cors({
-  origin: ["https://visionary-klepon-dd1044.netlify.app"], // ✅ your Netlify domain
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type"],
-}));
+// ✅ Fix CORS for local dev + Netlify (later)
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // local Vite dev
+      "https://visionary-klepon-dd1044.netlify.app", // your Netlify site
+    ],
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 
 app.use(express.json());
 
 const game = new Chess();
-
-// --- routes below ---
 
 app.get("/api/game", (req, res) => {
   res.json({

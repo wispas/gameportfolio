@@ -5,8 +5,6 @@ import type { PieceType } from '../types'
 
 const API_BASE = "https://gameportfolio-f7if-f9fy85ml4-wispas-projects.vercel.app";
 
-
-
 const makeMove = async (from: string, to: string) => {
   try {
     const res = await fetch(`${API_BASE}/api/move`, {
