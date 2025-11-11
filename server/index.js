@@ -3,7 +3,20 @@ import cors from "cors";
 import { Chess } from "chess.js";
 
 const app = express();
-app.use(cors());
+
+// ✅ Allow Netlify origin explicitly
+const allowedOrigins = [
+  "https://majestic-croissant-ed97bb.netlify.app", // your Netlify frontend
+];
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
+
 app.use(express.json());
 
 const game = new Chess();
