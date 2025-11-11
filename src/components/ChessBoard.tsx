@@ -3,6 +3,24 @@ import { useEffect, useState } from 'react'
 import Square from './Square'
 import type { PieceType } from '../types'
 
+const API_BASE = "https://gameportfolio-phi.vercel.app/";
+
+const makeMove = async (from: string, to: string) => {
+  try {
+    const res = await fetch(`${API_BASE}/api/move`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ from, to }),
+    });
+
+    const data = await res.json();
+    console.log("✅ API response:", data);
+  } catch (err) {
+    console.error("❌ API error:", err);
+  }
+};
+
+
 interface ChessBoardProps {
   onPieceCaptured: (piece: PieceType) => void
   onCheckmate?: () => void // ✅ new callback
@@ -53,6 +71,7 @@ export default function ChessBoard({
         })
 
         if (move) {
+          makeMove(move.from, move.to); 
           // 1️⃣ Handle capture first
           if (move.captured) {
             const capturedPiece = move.captured.toLowerCase() as PieceType
