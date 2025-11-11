@@ -6,7 +6,7 @@ const app = express();
 
 // ✅ Allow Netlify origin explicitly
 const allowedOrigins = [
-  "https://visionary-klepon-dd1044.netlify.app/", // your Netlify frontend
+  "https://visionary-klepon-dd1044.netlify.app", // your Netlify frontend
 ];
 
 app.use(
