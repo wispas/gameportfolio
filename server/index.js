@@ -9,7 +9,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173", // local Vite dev
-      "https://visionary-klepon-dd1044.netlify.app", // your Netlify site
+      "https://fancy-banoffee-f6e04f.netlify.app", // your Netlify site
     ],
     methods: ["GET", "POST", "OPTIONS"],
     allowedHeaders: ["Content-Type"],
