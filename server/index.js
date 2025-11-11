@@ -4,22 +4,17 @@ import { Chess } from "chess.js";
 
 const app = express();
 
-// ✅ Allow Netlify origin explicitly
-const allowedOrigins = [
-  "https://visionary-klepon-dd1044.netlify.app", // your Netlify frontend
-];
-
-app.use(
-  cors({
-    origin: allowedOrigins,
-    methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type"],
-  })
-);
+app.use(cors({
+  origin: ["https://visionary-klepon-dd1044.netlify.app"], // ✅ your Netlify domain
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type"],
+}));
 
 app.use(express.json());
 
 const game = new Chess();
+
+// --- routes below ---
 
 app.get("/api/game", (req, res) => {
   res.json({
