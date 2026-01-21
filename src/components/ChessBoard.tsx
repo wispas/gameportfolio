@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import Square from './Square'
 import type { PieceType } from '../types'
 
-const API_BASE = "https://gameportfolio-f7if-f9fy85ml4-wispas-projects.vercel.app";
+const API_BASE = "";
 
 const makeMove = async (from: string, to: string) => {
   try {
